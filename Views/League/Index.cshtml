@@ -1,0 +1,35 @@
+﻿@model IEnumerable<TermProject.Models.Leagues>
+
+@{
+    ViewData["Title"] = "Leagues List";
+}
+
+<h1 style="text-align: center; margin-bottom: 20px;">League List</h1>
+
+<p style ="text-align: center;">
+    <a asp-action="Create" class="btn btn-primary" style="padding: 10px 20px;">Create New</a>
+</p>
+<div style="overflow-x:auto; text-align: center;">
+    <table class="table" style="margin: 0 auto; width: 80%; border-collapse: collapse;">
+        <thead style="background-color: #f2f2f2;">
+        <tr>
+            <th style="padding: 10px; border: 1px solid">@Html.DisplayNameFor(model => model.Name)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td style="padding: 10px; border: 1px solid;">
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.LeagueId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.LeagueId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.LeagueId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>

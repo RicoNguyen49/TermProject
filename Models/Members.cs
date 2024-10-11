@@ -3,20 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace TermProject.Models
 {
-    public enum Country
-    {
-        USA,
-        Canada,
-        Germany,
-        England,
-        UK,
-        Spain,
-        korea,
-        Vietnam
-    }
     public class Members
     {
         public int ID { get; set; }
+
+        [Display(Name = "League ID")]
+        public int LeagueId { get; set; }
+        public Leagues? Leagues { get; set; }
 
         [Required]
         [Display(Name = "League Name")]
@@ -28,14 +21,12 @@ namespace TermProject.Models
         [StringLength(30, ErrorMessage = "Please enter your Sport name using 30 characters or less.")]
         public string? Sport { get; set; }
 
-        [Display(Name = "Country")]
-        public Country? CountryOrgin { get; set; }
 
-        [StringLength(50, ErrorMessage = "Please enter your address using 50 characters or less.")]
-        public string? HeadQuarters { get; set; }
+        [StringLength(50, ErrorMessage = "Please enter your Country using 50 characters or less.")]
+        public string? Country { get; set; }
 
-        [StringLength(2, ErrorMessage = "Please enter the state using 2 characters.")]
-        public string? Division { get; set; }
+        [StringLength(2, ErrorMessage = "Please enter the Division.")]
+        public int? Division { get; set; }
 
         public string? Email { get; set; }
 

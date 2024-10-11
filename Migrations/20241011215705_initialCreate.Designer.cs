@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TermProject.Models;
 
@@ -11,9 +12,10 @@ using TermProject.Models;
 namespace TermProject.Migrations
 {
     [DbContext(typeof(SportLeagueContext))]
-    partial class SportLeagueContextModelSnapshot : ModelSnapshot
+    [Migration("20241011215705_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,39 +23,6 @@ namespace TermProject.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
-
-            modelBuilder.Entity("TermProject.Models.Leagues", b =>
-                {
-                    b.Property<int>("LeagueId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("LeagueId"), 1L, 1);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("LeagueId");
-
-                    b.ToTable("Leagues");
-
-                    b.HasData(
-                        new
-                        {
-                            LeagueId = 1,
-                            Name = "English Premire League"
-                        },
-                        new
-                        {
-                            LeagueId = 2,
-                            Name = "NFL"
-                        },
-                        new
-                        {
-                            LeagueId = 3,
-                            Name = "MLB"
-                        });
-                });
 
             modelBuilder.Entity("TermProject.Models.Members", b =>
                 {
@@ -77,16 +46,10 @@ namespace TermProject.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LeagueId")
-                        .HasColumnType("int");
-
                     b.Property<string>("LeagueName")
                         .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
-
-                    b.Property<int?>("LeaguesLeagueId")
-                        .HasColumnType("int");
 
                     b.Property<string>("Sport")
                         .IsRequired()
@@ -94,8 +57,6 @@ namespace TermProject.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("LeaguesLeagueId");
 
                     b.ToTable("Membership");
 
@@ -107,7 +68,6 @@ namespace TermProject.Migrations
                             Country = "England",
                             Division = 1,
                             Email = "EPL@eng.com",
-                            LeagueId = 1,
                             LeagueName = "English premire league",
                             Sport = "Soccer"
                         },
@@ -118,7 +78,6 @@ namespace TermProject.Migrations
                             Country = "USA",
                             Division = 1,
                             Email = "NFL@yahoo.com",
-                            LeagueId = 2,
                             LeagueName = "NFL",
                             Sport = "FootBall"
                         },
@@ -129,19 +88,9 @@ namespace TermProject.Migrations
                             Country = " USA",
                             Division = 1,
                             Email = "MLB@gmail.com",
-                            LeagueId = 3,
                             LeagueName = "MLB",
                             Sport = "Baseball"
                         });
-                });
-
-            modelBuilder.Entity("TermProject.Models.Members", b =>
-                {
-                    b.HasOne("TermProject.Models.Leagues", "Leagues")
-                        .WithMany()
-                        .HasForeignKey("LeaguesLeagueId");
-
-                    b.Navigation("Leagues");
                 });
 #pragma warning restore 612, 618
         }
