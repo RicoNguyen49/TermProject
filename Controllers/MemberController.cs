@@ -56,7 +56,7 @@ namespace TermProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,LeagueName,Sport,CountryOrgin,HeadQuarters,Division,Email,Cell")] Members members)
+        public async Task<IActionResult> Create([Bind("ID,LeagueName,Sport,Country,Division,Email,Cell")] Members members)
         {
             if (ModelState.IsValid)
             {
@@ -88,7 +88,7 @@ namespace TermProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,LeagueName,Sport,CountryOrgin,HeadQuarters,Division,Email,Cell")] Members members)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,LeagueName,Sport,Country,Division,Email,Cell")] Members members)
         {
             if (id != members.ID)
             {

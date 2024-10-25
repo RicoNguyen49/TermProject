@@ -47,10 +47,6 @@ nav {
                 padding: 5px 10px;
             }
 
-                nav ul li a:hover {
-                    background: #e8491d;
-                    border-radius: 5px;
-                }
 
 /* Main content styles */
 main {
@@ -105,24 +101,20 @@ footer {
 a {
     color: darkgoldenrod;
     text-decoration: none;
-    padding: 10px;
 }
 
     a:hover {
-        font-size: 1.2em;
-        text-shadow: 1px 1px 10px darkgoldenrod;
         border-radius: 10px;
         text-decoration: none;
-        color: darkgoldenrod;
+        color:blue;
     }
 
 .nav-link:hover {
     color: white;
     background-color: darkgoldenrod;
     text-decoration: none;
-    border-radius: 10px;
 }
 
 .nav-link {
-    color: lightgoldenrodyellow !important;
+    color: lightgoldenrodyellow;
 }
